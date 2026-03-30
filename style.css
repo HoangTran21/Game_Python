@@ -1,0 +1,30 @@
+:root { --bg: #05070a; --snake: #2ecc71; --accent: #00ffff; --gold: #f1c40f; --red: #ff4757; }
+body { margin: 0; background: var(--bg); color: white; font-family: 'VT323', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+
+.game-container { display: flex; gap: 20px; background: #10141b; padding: 25px; border-radius: 20px; border: 2px solid #21262d; transition: 0.3s; }
+.sidebar { width: 360px; display: flex; flex-direction: column; gap: 10px; }
+.stats-row { display: flex; justify-content: space-between; font-size: 1.4rem; color: var(--gold); margin-top: 5px; }
+
+/* Intro Modal */
+.intro-box { background: #1c2128; padding: 40px; border-radius: 20px; text-align: center; border: 3px solid var(--accent); max-width: 400px; box-shadow: 0 0 50px rgba(0,255,255,0.2); }
+.gift-list { text-align: left; background: rgba(0,0,0,0.3); padding: 15px 40px; border-radius: 10px; color: var(--snake); list-style: none; }
+.intro-box button { margin-top: 25px; padding: 15px 30px; background: var(--snake); border: none; border-radius: 10px; font-family: 'VT323'; font-size: 1.5rem; cursor: pointer; font-weight: bold; }
+
+/* Animation Rung khi sai */
+@keyframes shake { 0% { transform: translate(1px, 1px) rotate(0deg); } 10% { transform: translate(-1px, -2px) rotate(-1deg); } 100% { transform: translate(1px, -1px) rotate(1deg); } }
+.shake { animation: shake 0.3s linear infinite; border-color: var(--red) !important; }
+
+/* Các phần khác giữ nguyên từ bản trước */
+.helps { display: flex; gap: 5px; }
+.help-btn { flex: 1; padding: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent); cursor: pointer; font-family: 'VT323'; border-radius: 5px; }
+.help-btn.used { border-color: #444; color: #444; text-decoration: line-through; }
+.mission-box { background: #000; padding: 12px; border-left: 4px solid var(--snake); font-size: 1.2rem; }
+textarea { width: 100%; height: 100px; background: #0d1117; color: #79c0ff; border: 1px solid #30363d; padding: 10px; border-radius: 8px; outline: none; font-family: monospace; }
+#check-btn { width: 100%; padding: 12px; background: var(--snake); border: none; font-family: 'VT323'; font-size: 1.5rem; cursor: pointer; border-radius: 8px; }
+.controls { text-align: center; border: 1px dashed var(--snake); padding: 10px; border-radius: 10px; }
+.d-pad { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.dir-btn { width: 45px; height: 45px; background: #1f2328; color: white; border: 1px solid #30363d; border-radius: 8px; cursor: pointer; }
+.canvas-area { background: #000; border: 4px solid #21262d; border-radius: 15px; }
+.overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center; z-index: 999; }
+.hidden { display: none !important; }
+.card { width: 100px; height: 150px; background: #e74c3c; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 3rem; cursor: pointer; border: 3px solid var(--gold); }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Quest: Truy Tìm Kho Báu</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body id="game-body">
+    <div id="intro-modal" class="overlay">
+        <div class="intro-box">
+            <h1>🐍 PYTHON QUEST 💎</h1>
+            <p>Chào mừng nhà lập trình trẻ! Mê cung huyền bí đang giữ kín những phần quà hấp dẫn:</p>
+            <ul class="gift-list">
+                <li>💰 Bao lì xì 10.000 VND</li>
+                <li>🏃‍♂️ Đặc quyền ra chơi sớm 5 phút</li>
+                <li>🍀 Và nhiều điều bất ngờ khác...</li>
+            </ul>
+            <p><strong>Luật chơi:</strong> Giải code để di chuyển. Bạn có <b>5 ❤️</b>. Đừng để hết tim nhé!</p>
+            <button onclick="startGame()">BẮT ĐẦU CHINH PHỤC</button>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div class="sidebar">
+            <div class="header">
+                <h2>🐍 NEON SNAKE</h2>
+                <div class="stats-row">
+                    <span>ẢI: <span id="lvl-num">1</span></span>
+                    <span id="heart-container">❤️❤️❤️❤️❤️</span>
+                </div>
+            </div>
+
+            <div class="helps">
+                <button id="help-hint" class="help-btn" onclick="useHelp('hint')">💡 Gợi ý</button>
+                <button id="help-wise" class="help-btn" onclick="useHelp('wise')">🧙 Thông thái</button>
+                <button id="help-call" class="help-btn" onclick="useHelp('call')">📞 Gọi điện</button>
+            </div>
+            
+            <div class="mission-box"><p id="mission-text">Nhiệm vụ sẽ hiện ở đây...</p></div>
+
+            <div id="input-zone">
+                <textarea id="code-input" spellcheck="false" placeholder="# Nhập code Python..."></textarea>
+                <button id="check-btn">XÁC NHẬN CODE</button>
+            </div>
+
+            <div id="controls" class="controls hidden">
+                <div class="d-pad">
+                    <button class="dir-btn" onclick="movePlayer(0, -1)">▲</button>
+                    <div class="middle-row">
+                        <button class="dir-btn" onclick="movePlayer(-1, 0)">◀</button>
+                        <button class="dir-btn" onclick="movePlayer(1, 0)">▶</button>
+                    </div>
+                    <button class="dir-btn" onclick="movePlayer(0, 1)">▼</button>
+                </div>
+            </div>
+            <div id="console-out" class="console">Hệ thống sẵn sàng...</div>
+        </div>
+        <div class="canvas-area"><canvas id="gameCanvas" width="480" height="480"></canvas></div>
+    </div>
+
+    <div id="gift-overlay" class="overlay hidden">
+        <div class="gift-container">
+            <h1 id="end-title">🎁 KHO BÁU! 🎁</h1>
+            <div id="card-zone" class="cards">
+                <div class="card" onclick="openGift(0)">🧧</div>
+                <div class="card" onclick="openGift(1)">🧧</div>
+                <div class="card" onclick="openGift(2)">🧧</div>
+            </div>
+            <div id="gift-result" class="gift-result hidden">
+                <h2 id="reward-text"></h2>
+                <button onclick="location.reload()">CHƠI LẠI</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
