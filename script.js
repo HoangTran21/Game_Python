@@ -40,7 +40,7 @@ const questionBank = [
     // --- NHÓM 4: CHUỖI (STRINGS) ---
     { m: "Tạo một chuỗi tên 'python'", r: /['"]python['"]/, h: "Bao quanh bởi dấu nháy", w: "Chuỗi có thể dùng nháy đơn hoặc nháy kép." },
     { m: "Nối chuỗi 'abc' và 'def'", r: /['"]abc['"]\s*\+\s*['"]def['"]/, h: "'abc' + 'def'", w: "Dùng dấu + để dính các chuỗi lại với nhau." },
-    { m: "Đếm độ dài chuỗi 'code'", r: /len\s*\(\s*['"]code['"]\s*\)/, h: "Dùng hàm len()", w: "len là viết tắt của length (độ dài)." },
+    { m: "Đếm số ký tự trong chuỗi 'code'", r: /len\s*\(\s*['"]code['"]\s*\)/, h: "len('code')", w: "len là viết tắt của length (độ dài)." },
     { m: "Lặp lại chuỗi 'Hi' 3 lần", r: /['"]Hi['"]\s*\*\s*3/, h: "'Hi' * 3", w: "Dấu * với chuỗi sẽ làm nó lặp lại." },
     { m: "Viết hoa chuỗi s", r: /s\.upper\s*\(\s*\)/, h: "s.upper()", w: "Hàm .upper() sẽ biến tất cả thành chữ hoa." },
 
@@ -137,7 +137,8 @@ document.getElementById('check-btn').addEventListener('click', () => {
             alert("💔 HẾT TIM RỒI! Bạn bị loại. Hãy thử lại từ đầu nhé.");
             location.reload();
         } else {
-            document.getElementById('console-out').innerText = `>>> Sai rồi! Bạn mất 1 ❤️. Còn ${hearts} tim.`;
+            const hint = gameQuestions[currentIdx].h ? `\nGợi ý: ${gameQuestions[currentIdx].h}` : "";
+            document.getElementById('console-out').innerText = `>>> Sai rồi! Bạn mất 1 ❤️. Còn ${hearts} tim. ${hint}`;
             document.getElementById('console-out').style.color = "#ff4757";
         }
     }
