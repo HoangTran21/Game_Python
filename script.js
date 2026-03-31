@@ -102,20 +102,82 @@ function startGame() {
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Vẽ bản đồ
     for (let r = 0; r < map.length; r++) {
         for (let c = 0; c < map[r].length; c++) {
             let x = c * TILE_SIZE, y = r * TILE_SIZE;
-            if (map[r][c] === 1) { ctx.fillStyle = "#161b22"; ctx.roundRect(x+3, y+3, TILE_SIZE-6, TILE_SIZE-6, 8); ctx.fill(); }
-            else if (map[r][c] === 2) { ctx.font = "30px Arial"; ctx.fillText("💎", x + 8, y + 35); }
+            if (map[r][c] === 1) {
+                ctx.fillStyle = "#161b22";
+                ctx.roundRect(x+3, y+3, TILE_SIZE-6, TILE_SIZE-6, 8);
+                ctx.fill();
+            } else if (map[r][c] === 2) {
+                ctx.font = "30px Arial";
+                ctx.fillText("💎", x + 8, y + 35);
+            }
         }
     }
+
+    // Vẽ nhân vật đẹp hơn
     const px = playerPos.x * TILE_SIZE, py = playerPos.y * TILE_SIZE;
-    ctx.fillStyle = "#2ecc71"; ctx.shadowBlur = 15; ctx.shadowColor = "#2ecc71";
-    ctx.beginPath(); ctx.arc(px + 24, py + 24, 18, 0, Math.PI * 2); ctx.fill();
+    // Hiệu ứng bóng neon
+    ctx.save();
+    ctx.shadowBlur = 30;
+    ctx.shadowColor = "#00fff7";
+    ctx.beginPath();
+    ctx.arc(px + 24, py + 24, 20, 0, Math.PI * 2);
+    ctx.fillStyle = "#2ecc71";
+    ctx.fill();
     ctx.shadowBlur = 0;
+    // Viền ngoài neon
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "#00fff7";
+    ctx.stroke();
+    // Mắt
+    ctx.beginPath();
+    ctx.arc(px + 17, py + 20, 3, 0, Math.PI * 2);
+    ctx.arc(px + 31, py + 20, 3, 0, Math.PI * 2);
+    ctx.fillStyle = "#fff";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(px + 17, py + 20, 1.2, 0, Math.PI * 2);
+    ctx.arc(px + 31, py + 20, 1.2, 0, Math.PI * 2);
+    ctx.fillStyle = "#00fff7";
+    ctx.fill();
+
+    // Miệng cười động
+    ctx.save();
+    ctx.beginPath();
+    // Tạo hiệu ứng miệng cười/mím bằng cách thay đổi góc cung tròn theo thời gian
+    const t = Date.now() / 400; // tốc độ chuyển động
+    // Giá trị dao động từ 0 (mím) đến 1 (cười)
+    const smile = 0.5 + 0.5 * Math.sin(t);
+    // Di chuyển miệng lên gần mắt hơn (py + 28)
+    const mouthY = py + 28;
+    // Góc mở miệng: cười rộng hơn khi smile lớn
+    const startAngle = 0.25 * Math.PI + 0.15 * Math.PI * (1 - smile);
+    const endAngle = 0.75 * Math.PI - 0.15 * Math.PI * (1 - smile);
+    ctx.arc(px + 24, mouthY, 7, startAngle, endAngle, false);
+    ctx.lineWidth = 2.2;
+    ctx.strokeStyle = "#fff";
+    ctx.stroke();
+    ctx.restore();
+    ctx.restore();
+
+    // Vẽ logo ở góc trên canvas
+    if (window.logoImg && window.logoImg.complete) {
+        ctx.save();
+        ctx.globalAlpha = 0.92;
+        ctx.drawImage(window.logoImg, canvas.width - 90, 10, 80, 80);
+        ctx.restore();
+    }
+
     if (map[playerPos.y][playerPos.x] === 2) document.getElementById('gift-overlay').classList.remove('hidden');
     requestAnimationFrame(draw);
 }
+
+// Tải logo.png vào window.logoImg
+window.logoImg = new window.Image();
+window.logoImg.src = 'logo.png';
 
 document.getElementById('check-btn').addEventListener('click', () => {
     const code = document.getElementById('code-input').value.trim();
