@@ -10,7 +10,7 @@
 <body id="game-body">
     <div id="intro-modal" class="overlay">
         <div class="intro-box">
-            <h1>🐍 PYTHON QUEST 💎</h1>
+            <h1>🐍 PYTHON QUEST 🪙</h1>
             <p>Chào mừng nhà lập trình trẻ! Mê cung huyền bí đang giữ kín những phần quà hấp dẫn:</p>
             <ul class="gift-list">
                 <li>💰 Bao lì xì 10.000 VND</li>
@@ -61,16 +61,19 @@
     </div>
 
     <div id="gift-overlay" class="overlay hidden">
-        <div class="gift-container">
-            <h1 id="end-title">🎁 KHO BÁU! 🎁</h1>
-            <div id="card-zone" class="cards">
-                <div class="card" onclick="openGift(0)">🧧</div>
-                <div class="card" onclick="openGift(1)">🧧</div>
-                <div class="card" onclick="openGift(2)">🧧</div>
-            </div>
-            <div id="gift-result" class="gift-result hidden">
-                <h2 id="reward-text"></h2>
-                <button onclick="location.reload()">CHƠI LẠI</button>
+        <div class="gift-container gift-flex">
+            <img src="mixi.jpg" alt="Mixi" class="mixi-gift-img">
+            <div class="gift-content">
+                <h1 id="end-title">🎁 KHO BÁU! 🎁</h1>
+                <div id="card-zone" class="cards">
+                    <div class="card" onclick="openGift(0)">🧧</div>
+                    <div class="card" onclick="openGift(1)">🧧</div>
+                    <div class="card" onclick="openGift(2)">🧧</div>
+                </div>
+                <div id="gift-result" class="gift-result hidden">
+                    <h2 id="reward-text"></h2>
+                    <button onclick="location.reload()">CHƠI LẠI</button>
+                </div>
             </div>
         </div>
     </div>

@@ -1,3 +1,22 @@
+/* Gift overlay flex and Mixi image */
+.gift-flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 24px;
+}
+.mixi-gift-img {
+	width: 200px;
+	height: 200px;
+	border-radius: 18px;
+	box-shadow: 0 0 24px #00ffffcc, 0 0 0 6px #10141b;
+	background: #111;
+	object-fit: cover;
+	opacity: 0.96;
+}
+.gift-content {
+	flex: 1;
+}
 :root { --bg: #05070a; --snake: #2ecc71; --accent: #00ffff; --gold: #f1c40f; --red: #ff4757; }
 body { margin: 0; background: var(--bg); color: white; font-family: 'VT323', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
 
