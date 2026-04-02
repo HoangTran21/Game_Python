@@ -217,7 +217,25 @@ function useHelp(type) {
     const q = gameQuestions[currentIdx];
     if (type === 'hint') document.getElementById('console-out').innerText = "💡 Gợi ý: " + q.h;
     else if (type === 'wise') alert("🧙 Thông thái: " + q.w);
-    else alert("📞 Người thân: 'Đáp án chắc là " + q.h + "'");
+    else if (type === 'call') {
+        document.getElementById('call-modal').classList.remove('hidden');
+    }
+}
+
+// Xử lý form gọi điện
+document.addEventListener('DOMContentLoaded', function() {
+    var callForm = document.getElementById('call-form');
+    if (callForm) {
+        callForm.onsubmit = function(e) {
+            e.preventDefault();
+            document.getElementById('call-modal').classList.add('hidden');
+            document.getElementById('call-result-modal').classList.remove('hidden');
+        };
+    }
+});
+
+function closeCallResult() {
+    document.getElementById('call-result-modal').classList.add('hidden');
 }
 
 function movePlayer(dx, dy) {

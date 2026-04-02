@@ -58,11 +58,36 @@
             <div id="console-out" class="console">Hệ thống sẵn sàng...</div>
         </div>
         <div class="canvas-area"><canvas id="gameCanvas" width="480" height="480"></canvas></div>
+            <!-- Modal chọn người gọi điện -->
+            <div id="call-modal" class="overlay hidden">
+                <div class="intro-box" style="max-width: 420px;">
+                    <h2>Chọn người để gọi điện</h2>
+                    <form id="call-form">
+                        <label><input type="radio" name="call-person" value="mixi" checked> Anh Độ Mixi</label><br>
+                        <label><input type="radio" name="call-person" value="phung"> Anh Phùng Thanh Độ</label><br>
+                        <label><input type="radio" name="call-person" value="tay"> Anh người Tày</label><br>
+                        <button type="submit" style="margin-top:16px;width:100%;">Gọi ngay</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal kết quả gọi điện -->
+            <div id="call-result-modal" class="overlay hidden">
+                <div class="intro-box" style="max-width: 600px;">
+                    <div class="gift-flex">
+                        <img src="mixi.jpg" alt="Mixi" class="mixi-gift-img">
+                        <div class="gift-content">
+                            <h3>Gợi ý từ Mixi:</h3>
+                            <div id="call-hint"></div>
+                            <button onclick="closeCallResult()" style="margin-top:18px;">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 
     <div id="gift-overlay" class="overlay hidden">
         <div class="gift-container gift-flex">
-            <img src="mixi.jpg" alt="Mixi" class="mixi-gift-img">
+            <img src="ando_mixi.jpg" alt="Mixi" class="mixi-gift-img">
             <div class="gift-content">
                 <h1 id="end-title">🎁 KHO BÁU! 🎁</h1>
                 <div id="card-zone" class="cards">
