@@ -79,7 +79,6 @@ const questionBank = [
     { m: "Ép kiểu x sang số thực", r: /float\s*\(\s*x\s*\)/, h: "float(x)", w: "Hàm float() dùng cho số thập phân." },
     { m: "Ép kiểu x sang chuỗi", r: /str\s*\(\s*x\s*\)/, h: "str(x)", w: "Hàm str() biến mọi thứ thành chữ." },
 
-    // --- NHÓM 11: LOGIC VÀ KHÁC ---
     { m: "Viết một dòng ghi chú (comment)", r: /#.+/, h: "Dùng dấu #", w: "Bất cứ thứ gì sau dấu # sẽ không bị máy tính chạy." },
     { m: "Giá trị Đúng trong Logic", r: /\bTrue\b/, h: "True", w: "Lưu ý: Python viết hoa chữ T trong True." },
     { m: "Giá trị Sai trong Logic", r: /\bFalse\b/, h: "False", w: "Lưu ý: Python viết hoa chữ F trong False." },
@@ -92,7 +91,7 @@ let canMove = false;
 let hearts = 5;
 let helps = { hint: false, wise: false, call: false };
 let gameQuestions = questionBank.sort(() => Math.random() - 0.5);
-const gifts = ["10.000 VND 💸", "May mắn lần sau 🧊", "Ra chơi sớm 5 phút 🏃‍♂️"].sort(() => Math.random() - 0.5);
+const gifts = ["10.000 VND 💸", "Khô gà đè tem 🐔🐥", "Ra chơi sớm 5 phút 🏃‍♂️"].sort(() => Math.random() - 0.5);
 
 function startGame() {
     document.getElementById('intro-modal').classList.add('hidden');
@@ -102,7 +101,6 @@ function startGame() {
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // Vẽ bản đồ
     for (let r = 0; r < map.length; r++) {
         for (let c = 0; c < map[r].length; c++) {
             let x = c * TILE_SIZE, y = r * TILE_SIZE;
@@ -117,9 +115,7 @@ function draw() {
         }
     }
 
-    // Vẽ nhân vật đẹp hơn
     const px = playerPos.x * TILE_SIZE, py = playerPos.y * TILE_SIZE;
-    // Hiệu ứng bóng neon
     ctx.save();
     ctx.shadowBlur = 30;
     ctx.shadowColor = "#00fff7";
@@ -128,11 +124,9 @@ function draw() {
     ctx.fillStyle = "#2ecc71";
     ctx.fill();
     ctx.shadowBlur = 0;
-    // Viền ngoài neon
     ctx.lineWidth = 4;
     ctx.strokeStyle = "#00fff7";
     ctx.stroke();
-    // Mắt
     ctx.beginPath();
     ctx.arc(px + 17, py + 20, 3, 0, Math.PI * 2);
     ctx.arc(px + 31, py + 20, 3, 0, Math.PI * 2);
@@ -144,7 +138,6 @@ function draw() {
     ctx.fillStyle = "#00fff7";
     ctx.fill();
 
-    // Miệng cười động
     ctx.save();
     ctx.beginPath();
     // Tạo hiệu ứng miệng cười/mím bằng cách thay đổi góc cung tròn theo thời gian
@@ -219,6 +212,8 @@ function useHelp(type) {
     else if (type === 'wise') alert("🧙 Thông thái: " + q.w);
     else if (type === 'call') {
         document.getElementById('call-modal').classList.remove('hidden');
+        // Luôn cập nhật gợi ý vào modal kết quả gọi điện
+        document.getElementById('call-hint').innerText = q.h ? q.h : "Chưa có gợi ý cho câu này!";
     }
 }
 
